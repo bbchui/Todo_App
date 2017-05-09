@@ -5,7 +5,7 @@ import uniqueId from './utils';
 class TodoForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {title: "", body:"", id: uniqueId()};
+    this.state = {title: "", body:"", id: uniqueId(), done: "false"};
     this.getInput = this.getInput.bind(this);
     this.updateTitle = this.updateTitle.bind(this);
     this.updateBody = this.updateBody.bind(this);
@@ -49,7 +49,7 @@ class TodoForm extends React.Component {
             placeholder='build time machine'>
           </input>
         </label>
-        <button onClick={this.getInput}></button>
+        <button onClick={this.getInput}>Submit</button>
       </div>
     );
   }
