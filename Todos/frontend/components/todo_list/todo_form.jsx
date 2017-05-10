@@ -5,7 +5,7 @@ import uniqueId from './utils';
 class TodoForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {title: "", body:"", id: uniqueId(), done: "false"};
+    this.state = {title: "", body:"", done: "false"};
     this.getInput = this.getInput.bind(this);
     this.updateTitle = this.updateTitle.bind(this);
     this.updateBody = this.updateBody.bind(this);
@@ -22,8 +22,9 @@ class TodoForm extends React.Component {
 
   getInput(e) {
     e.preventDefault();
-    this.props.receiveTodo(this.state);
-    this.setState({title: "", body:""});
+    this.props.createTodo({todo: this.state}).then(
+  () => this.setState({ title: "", body: "" }),
+  (errors) => console.log(errors));
   }
 
   render() {
